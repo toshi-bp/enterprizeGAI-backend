@@ -1,0 +1,10 @@
+# TODO: add packages
+langchain-openai
+fastapi
+uvicorn
+gunicorn
+langchain
+# openai
+websockets
+python-multipart
+python-dotenv
