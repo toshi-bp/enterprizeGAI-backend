@@ -39,9 +39,6 @@ const Center: React.FunctionComponent<CenterProps> = ({
 
   const addMessage = useCallback(
     (text: string, type: string) => {
-      console.log("text: ", text);
-      console.log("type: ", type);
-
       setComments((comments) => comments.slice(0, -1).concat({ type, text }));
     },
     [setComments]
@@ -108,9 +105,8 @@ const Center: React.FunctionComponent<CenterProps> = ({
     });
     formattedDate = formattedDate.replace(/\//g, "'");
     setDate(formattedDate);
-    console.log("new comment: ", newComment);
     setComments((comments) => [...comments, newComment]);
-    setComments((comments) => [...comments, { type: "ai", text: "Now Thinking..." }]);
+    setComments((comments) => [...comments, { type: "ai", text: "考え中..." }]);
     // apiClient.runLlmLlmPost({ text: selectedText }).then((response) => {
     //   const aiResponse = {
     //     type: "ai",
@@ -139,11 +135,11 @@ const Center: React.FunctionComponent<CenterProps> = ({
     <div className="relative self-stretch flex-1 flex flex-col items-start justify-between h-[88vh] overflow-auto text-left text-base text-black font-inter">
       <div className="self-stretch flex-1 flex flex-col items-center justify-end gap-[10px] text-xs">
         <div className="self-stretch overflow-hidden flex-1 flex flex-col items-start justify-start pt-0 px-0 pb-16 gap-[10px]">
-          <UserComment
+          {/* <UserComment
             text={buttonTexts.firstUserComment}
             // date={"2024’03’05 12:00"}
           />
-          <AIComment text={buttonTexts.firstAIComment} />
+          <AIComment text={buttonTexts.firstAIComment} /> */}
           {comments.map((comment, index) =>
             comment.type === "user" ? (
               <UserComment

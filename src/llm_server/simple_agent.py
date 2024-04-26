@@ -28,8 +28,8 @@ def ask_question(question: str) -> str:
 def create_conversational_chain():
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key=os.environ["OPENAI_API_KEY"])
     # TODO: プロンプト修正
-    template = """。
-
+    template = """
+    あなたは、優秀なアドバイザーです。以下の会話を踏まえて回答をお願いします。
     {chat_history}
     {input}
 """

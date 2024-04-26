@@ -60,19 +60,21 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    if (matches) {
-      setIsLeftbarOpen(false);
-    } else {
-      setIsLeftbarOpen(true);
-    }
+    setIsLeftbarOpen(false);
+    // if (matches) {
+    //   setIsLeftbarOpen(false);
+    // } else {
+    //   setIsLeftbarOpen(true);
+    // }
   }, [matches]);
 
   useEffect(() => {
-    if (matches) {
-      setIsRightbarOpen(false);
-    } else {
-      setIsRightbarOpen(true);
-    }
+    setIsRightbarOpen(false);
+    // if (matches) {
+    //   setIsRightbarOpen(false);
+    // } else {
+    //   setIsRightbarOpen(true);
+    // }
   }, [matches]);
 
   return (
