@@ -13,7 +13,6 @@ def ask_question(question: str) -> str:
     """
     TODO: 関数の説明の追加
     """
-    # llm = OpenAIChat(model_name="gpt-3.5-turbo")
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key=os.environ["OPENAI_API_KEY"])
     template = """Question: {question}
 
@@ -27,7 +26,6 @@ def ask_question(question: str) -> str:
 
 
 def create_conversational_chain():
-    # llm = OpenAIChat(model_name="gpt-3.5-turbo")
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key=os.environ["OPENAI_API_KEY"])
     # TODO: プロンプト修正
     template = """。

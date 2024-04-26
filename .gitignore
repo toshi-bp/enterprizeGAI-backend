@@ -162,3 +162,5 @@ cython_debug/
 
 .env
 .venv/
+
+frontend/node_modules
