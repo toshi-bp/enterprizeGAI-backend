@@ -8,11 +8,7 @@ interface LeftbarProps {
   isLeftbarOpen: boolean;
 }
 
-const Leftbar: FunctionComponent<LeftbarProps> = ({
-  setSelectedText,
-  setIsLeftbarOpen,
-  isLeftbarOpen,
-}) => {
+const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText, setIsLeftbarOpen, isLeftbarOpen }) => {
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
   const [activeButton, setActiveButton] = useState<string | null>("template");
@@ -37,12 +33,12 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({
   return (
     <>
       <div
-        className={`relative flex-grow self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] w-[800px] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200  ${
+        className={`relative flex-grow self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] w-[50px] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200  ${
           isLeftbarOpen ? "block" : "hidden"
         }`}
       >
         {" "}
-        <div className="flex flex-row items-start justify-between py-3 px-[20px] mx-auto w-[80%]">
+        <div className="flex flex-row items-start justify-between py-3 px-[20px] mx-auto w-[50%]">
           <div className="flex flex-row items-start justify-center ">
             <button
               className={`cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-inter ${
