@@ -22,12 +22,10 @@ app.add_middleware(
 class Message(BaseModel):
     text: str = Field(title="Request message to LLM.", max_length=1000)
 
+class MessageInput(BaseModel):
+    hoge: str
 
 class LLMResponse(BaseModel):
-    text: str
-
-
-class WhisperResponse(BaseModel):
     text: str
 
 

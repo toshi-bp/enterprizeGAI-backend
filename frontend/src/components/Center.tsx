@@ -35,6 +35,39 @@ const Center: React.FunctionComponent<CenterProps> = ({
   const [textareaHeight, setTextareaHeight] = useState(0);
   const textareaRef = useRef<HTMLDivElement>(null);
   const [date, setDate] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const addMessage = useCallback(
+    (text: string, type: string) => {
+      console.log("text: ", text);
+      console.log("type: ", type);
+
+      setComments((comments) => comments.slice(0, -1).concat({ type, text }));
+    },
+    [setComments]
+  );
+
+  const socketRef = useRef<WebSocket>();
+  useEffect(() => {
+    const websocket = new WebSocket("ws://localhost:8000/chat");
+    socketRef.current = websocket;
+    socketRef.current.onopen = () => {
+      console.log("WebSocket connected");
+    };
+
+    const onMessage = (event: MessageEvent<string>) => {
+      const type = JSON.parse(event.data).type ?? "ai";
+      const text = JSON.parse(event.data).text ?? "";
+      addMessage(text, type);
+      setLoading(false);
+    };
+    websocket.addEventListener("message", onMessage);
+
+    return () => {
+      websocket.close();
+      websocket.removeEventListener("message", onMessage);
+    };
+  }, [addMessage]);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -51,7 +84,6 @@ const Center: React.FunctionComponent<CenterProps> = ({
   };
 
   const handleSubmit = useCallback(() => {
-    // TODO: ここでAPIを叩く
     if (!selectedText.trim()) return;
     const newComment = {
       type: "user",
@@ -62,8 +94,9 @@ const Center: React.FunctionComponent<CenterProps> = ({
       text: "これはAIの自動生成された応答です。",
     };
     // setComments((comments) => [...comments, newComment, aiResponse]);
-    setComments((comments) => [...comments, newComment]);
     setSelectedText("");
+    socketRef.current?.send(JSON.stringify(newComment));
+
     const date = new Date();
     let formattedDate = date.toLocaleString("ja-JP", {
       year: "numeric",
@@ -75,14 +108,17 @@ const Center: React.FunctionComponent<CenterProps> = ({
     });
     formattedDate = formattedDate.replace(/\//g, "'");
     setDate(formattedDate);
-    apiClient.runLlmLlmPost({ text: selectedText }).then((response) => {
-      const aiResponse = {
-        type: "ai",
-        text: response.data.text,
-      };
-      console.log(response.data.text);
-      setComments((comments) => [...comments, aiResponse]);
-    });
+    console.log("new comment: ", newComment);
+    setComments((comments) => [...comments, newComment]);
+    setComments((comments) => [...comments, { type: "ai", text: "Now Thinking..." }]);
+    // apiClient.runLlmLlmPost({ text: selectedText }).then((response) => {
+    //   const aiResponse = {
+    //     type: "ai",
+    //     text: response.data.text,
+    //   };
+    //   console.log(response.data.text);
+    //   setComments((comments) => [...comments, aiResponse]);
+    // });
   }, [selectedText]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {

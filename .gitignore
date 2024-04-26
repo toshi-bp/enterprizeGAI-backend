@@ -161,6 +161,5 @@ cython_debug/
 #.idea/
 
 .env
-.venv/
 
 frontend/node_modules
