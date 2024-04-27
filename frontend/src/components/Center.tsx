@@ -1,4 +1,11 @@
-import { FunctionComponent, useState, useEffect, KeyboardEvent, useRef, useCallback } from "react";
+import {
+  FunctionComponent,
+  useState,
+  useEffect,
+  KeyboardEvent,
+  useRef,
+  useCallback,
+} from "react";
 import UserComment from "./UserComment";
 import AIComment from "./AIComment";
 import TextareaAutosize from "react-textarea-autosize";
@@ -31,7 +38,9 @@ const Center: React.FunctionComponent<CenterProps> = ({
   setIsRightbarOpen,
   isRightbarOpen,
 }) => {
-  const [comments, setComments] = useState<Array<{ type: string; text: string }>>([]);
+  const [comments, setComments] = useState<
+    Array<{ type: string; text: string }>
+  >([]);
   const [textareaHeight, setTextareaHeight] = useState(0);
   const textareaRef = useRef<HTMLDivElement>(null);
   const [date, setDate] = useState<string>("");
@@ -68,7 +77,9 @@ const Center: React.FunctionComponent<CenterProps> = ({
 
   useEffect(() => {
     const updateHeight = () => {
-      setTextareaHeight(textareaRef.current ? textareaRef.current.scrollHeight : 0);
+      setTextareaHeight(
+        textareaRef.current ? textareaRef.current.scrollHeight : 0
+      );
     };
 
     updateHeight(); // 初回の高さの更新
@@ -142,11 +153,7 @@ const Center: React.FunctionComponent<CenterProps> = ({
           <AIComment text={buttonTexts.firstAIComment} /> */}
           {comments.map((comment, index) =>
             comment.type === "user" ? (
-              <UserComment
-                key={index}
-                text={comment.text}
-                // date={date}
-              />
+              <UserComment key={index} text={comment.text} date={date} />
             ) : (
               <AIComment key={index} text={comment.text} />
             )
@@ -177,13 +184,17 @@ const Center: React.FunctionComponent<CenterProps> = ({
       </div>{" "}
       <button
         className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 left-3 ${
-          isLeftbarOpen ? "bg-[url('/public/Sidebutton@3x.png')]" : "bg-[url('/public/CurvedSidebutton@3x.png')]"
+          isLeftbarOpen
+            ? "bg-[url('/public/Sidebutton@3x.png')]"
+            : "bg-[url('/public/CurvedSidebutton@3x.png')]"
         } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
         onClick={toggleLeftbar}
       ></button>
       <button
         className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 right-3 ${
-          isRightbarOpen ? "bg-[url('/public/Sidebutton@3x.png')]" : "bg-[url('/public/RightCurvedSidebutton@3x.png')]"
+          isRightbarOpen
+            ? "bg-[url('/public/Sidebutton@3x.png')]"
+            : "bg-[url('/public/RightCurvedSidebutton@3x.png')]"
         } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
         onClick={toggleRightbar}
       ></button>
