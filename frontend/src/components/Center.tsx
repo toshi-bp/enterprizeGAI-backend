@@ -160,7 +160,7 @@ const Center: React.FunctionComponent<CenterProps> = ({
           )}
         </div>
         <div
-          className="relative self-stretch flex flex-col items-center justify-start z-1  bottom-0 h-20 pb-4 px-6 bg-white"
+          className="relative self-stretch flex flex-col items-center justify-start z-1  bottom-0 pb-4 px-6 mb-5 bg-white"
           style={{ height: `${textareaHeight}px` }}
         >
           <div
