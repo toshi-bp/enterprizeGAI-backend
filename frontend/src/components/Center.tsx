@@ -160,7 +160,7 @@ const Center: React.FunctionComponent<CenterProps> = ({
           )}
         </div>
         <div
-          className="relative self-stretch flex flex-col items-center justify-start z-1  bottom-0 h-20 pb-4 px-6 bg-white"
+          className="relative self-stretch flex flex-col items-center justify-start z-1  bottom-0 pb-4 px-6 mb-5 bg-white"
           style={{ height: `${textareaHeight}px` }}
         >
           <div
@@ -183,18 +183,18 @@ const Center: React.FunctionComponent<CenterProps> = ({
         </div>
       </div>{" "}
       <button
-        className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 left-3 ${
+        className={`fixed cursor-pointer border-none p-0 bg-transparent top-1/2 -translate-y-1/2  ${
           isLeftbarOpen
-            ? "bg-[url('/public/Sidebutton@3x.png')]"
-            : "bg-[url('/public/CurvedSidebutton@3x.png')]"
+            ? "bg-[url('/public/Sidebutton@3x.png')] left-64"
+            : "bg-[url('/public/CurvedSidebutton@3x.png')] left-3"
         } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
         onClick={toggleLeftbar}
       ></button>
       <button
-        className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 right-3 ${
+        className={`fixed cursor-pointer border-none p-0 bg-transparent top-1/2 -translate-y-1/2 ${
           isRightbarOpen
-            ? "bg-[url('/public/Sidebutton@3x.png')]"
-            : "bg-[url('/public/RightCurvedSidebutton@3x.png')]"
+            ? "bg-[url('/public/Sidebutton@3x.png')] right-[246px]"
+            : "bg-[url('/public/RightCurvedSidebutton@3x.png')] right-3"
         } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
         onClick={toggleRightbar}
       ></button>
