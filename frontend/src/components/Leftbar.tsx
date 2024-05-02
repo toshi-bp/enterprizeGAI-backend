@@ -36,7 +36,7 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({
 
   return (
     <div
-      className={`relative flex-grow self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] min-w-52 max-w-80 py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200  ${
+      className={`relative self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] w-60  py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200  ${
         isLeftbarOpen ? "block" : "hidden"
       }`}
     >
