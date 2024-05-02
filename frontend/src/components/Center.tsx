@@ -193,7 +193,7 @@ const Center: React.FunctionComponent<CenterProps> = ({
       <button
         className={`fixed cursor-pointer border-none p-0 bg-transparent top-1/2 -translate-y-1/2 ${
           isRightbarOpen
-            ? "bg-[url('/public/Sidebutton@3x.png')] right-[246px]"
+            ? "bg-[url('/public/Sidebutton@3x.png')] right-[250px]"
             : "bg-[url('/public/RightCurvedSidebutton@3x.png')] right-3"
         } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
         onClick={toggleRightbar}
