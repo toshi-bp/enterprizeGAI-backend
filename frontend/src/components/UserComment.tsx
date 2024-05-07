@@ -7,7 +7,7 @@ interface UserCommentProps {
 
 const UserComment: FunctionComponent<UserCommentProps> = ({ text, date }) => {
   return (
-    <div className="whitespace-pre-wrap self-stretch bg-snow flex flex-row items-start justify-start pt-8 pb-12 pr-8 pl-4 ms:pr-16 ms:pl-12  ld:pr-[25%] ld:pl-[20%] gap-[10px] text-left text-xs text-black font-inter">
+    <div className="whitespace-pre-wrap self-stretch bg-snow flex flex-row items-start justify-start pt-8 pb-8 pr-8 pl-4 ms:pr-16 ms:pl-12  ld:pr-[25%] ld:pl-[20%] gap-[10px] text-left text-xs text-black font-inter">
       <img
         className="w-[31px] relative rounded-2xs h-[31px] object-cover"
         alt=""
